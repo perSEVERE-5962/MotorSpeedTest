@@ -2,10 +2,9 @@
 package org.usfirst.frc.team5962.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team5962.robot.commands.RunArcadeGame;
+import org.usfirst.frc.team5962.robot.sensors.RobotEncoder;
 import org.usfirst.frc.team5962.robot.subsystems.Drive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -20,6 +19,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	
 	public static Drive drive;
+    public static RobotEncoder encoder = new RobotEncoder();
 
     /**
      * This function is run when the robot is first started up and should be
@@ -94,6 +94,7 @@ public class Robot extends IterativeRobot {
         }
     	RobotMap.inTakeVictor.set(speedValue);
     	SmartDashboard.putString("Controller Speed Value", (int)(speedValue*100) + "%");
+    	SmartDashboard.putString("RPM Value", Robot.encoder.getRPM() + "");
     }
     
     /**
